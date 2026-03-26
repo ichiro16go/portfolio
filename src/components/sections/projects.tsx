@@ -1,6 +1,14 @@
-"use client";
+/**
+ * @file projects.tsx
+ * @description 「Projects」セクション。
+ * 制作したアプリや執筆した記事など、主要な成果物をカード形式で一覧表示します。
+ */
+
+"use client"
+;
 
 import { motion, Variants } from "framer-motion";
+import Image from "next/image";
 import { siteConfig } from "@/config/site";
 import { HologramCard } from "@/components/ui/hologram-card";
 
@@ -20,11 +28,11 @@ export function Projects() {
           variants={staggerContainer}
         >
           <div className="flex items-center mb-16">
-            <h2 className="text-3xl font-bold tracking-tight">
-              <span className="text-pink-500 mr-2">✦</span>
+            <h2 className="text-3xl font-personality tracking-[0.1em] uppercase">
+              <span className="text-[var(--brand-prism)] mr-2">✦</span>
               Featured Projects
             </h2>
-            <div className="h-[1px] bg-gradient-to-r from-pink-500/50 to-transparent flex-grow ml-6"></div>
+            <div className="h-[1px] bg-gradient-to-r from-[var(--brand-prism)]/50 to-transparent flex-grow ml-6"></div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-16">
@@ -35,9 +43,14 @@ export function Projects() {
                   description={project.description}
                   tags={project.tags}
                   imagePlaceholder={
-                    <div className="font-mono text-zinc-600 text-xs uppercase tracking-tighter">
-                      {project.imagePlaceholder}
-                    </div>
+                    project.image ? (
+                      <Image
+                        src={project.image}
+                        alt={project.title}
+                        fill
+                        className="object-cover"
+                      />
+                    ) : undefined
                   }
                   achievements={
                     project.type === "app" 

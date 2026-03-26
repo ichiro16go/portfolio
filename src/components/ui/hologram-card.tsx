@@ -1,8 +1,15 @@
+/**
+ * @file HologramCard.tsx
+ * @description ホログラムエフェクト、マウス追従の3D傾斜、およびクリックによるカード反転（裏面表示）機能を備えた
+ * インタラクティブなカードコンポーネント。ポートフォリオのプロジェクト表示などに使用されます。
+ */
+
 "use client"
 
 import React, { useState, useRef, useCallback } from "react"
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion"
 import { Badge } from "@/components/ui/badge"
+import Image from "next/image"
 
 interface HologramCardProps {
   title: string
@@ -12,12 +19,12 @@ interface HologramCardProps {
   achievements?: string[]
 }
 
-export function HologramCard({ 
-  title, 
-  description, 
-  imagePlaceholder, 
-  tags, 
-  achievements 
+export function HologramCard({
+  title,
+  description,
+  imagePlaceholder,
+  tags,
+  achievements
 }: HologramCardProps) {
   const cardRef = useRef<HTMLDivElement>(null)
   const [isFlipped, setIsFlipped] = useState(false)
@@ -70,53 +77,65 @@ export function HologramCard({
         className="relative w-full h-full transition-shadow duration-500"
       >
         {/* Front Side */}
-        <div 
-          className="absolute inset-0 w-full h-full backface-hidden rounded-xl border border-white/10 overflow-hidden bg-zinc-900/80 backdrop-blur-md shadow-2xl"
+        <div
+          className="absolute inset-0 w-full h-full backface-hidden rounded-xl border border-white/10 overflow-hidden bg-[var(--bg-deep)]/80 backdrop-blur-md shadow-2xl glass"
           style={{ transform: "translateZ(0px)" }}
         >
           {/* Holographic Glint Layer */}
-          <motion.div 
+          <motion.div
             className="absolute inset-0 z-10 pointer-events-none opacity-40"
             style={{
-              background: `radial-gradient(circle at ${glintX} ${glintY}, rgba(255,45,85,0.4) 0%, transparent 60%)`,
+              background: `radial-gradient(circle at ${glintX} ${glintY}, var(--brand-prism) 0%, transparent 60%)`,
             }}
           />
-          
+
           <div className="h-48 bg-black/40 flex items-center justify-center border-b border-white/5 overflow-hidden relative">
-             <div className="absolute inset-0 bg-gradient-to-t from-zinc-900/80 to-transparent z-1" />
-             <div className="z-0 scale-110 group-hover:scale-125 transition-transform duration-700">
-               {imagePlaceholder}
-             </div>
+            <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-deep)]/80 to-transparent z-1" />
+            <div className="absolute inset-0 z-0">
+              {imagePlaceholder}
+            </div>
           </div>
 
           <div className="p-5 flex flex-col h-[calc(100%-192px)]">
-            <h3 className="text-xl font-bold mb-2 text-white group-hover:text-pink-500 transition-colors">{title}</h3>
-            <p className="text-zinc-400 text-sm line-clamp-3 mb-4">{description}</p>
+            <h3 className="text-xl font-personality mb-2 text-[var(--text-white)] group-hover:text-[var(--brand-prism)] transition-colors">{title}</h3>
+            <p className="text-[var(--text-slate)] text-sm font-human line-clamp-3 mb-4">{description}</p>
             <div className="mt-auto flex flex-wrap gap-1.5">
               {tags.map(tag => (
-                <Badge key={tag} variant="outline" className="text-[10px] py-0 border-pink-500/30 text-pink-400 bg-pink-500/5">{tag}</Badge>
+                <Badge key={tag} variant="outline" className="text-[10px] font-logic py-0 border-[var(--brand-cyber)]/30 text-[var(--brand-cyber)] bg-[var(--brand-cyber)]/5">{tag}</Badge>
               ))}
             </div>
           </div>
         </div>
 
         {/* Back Side (Details/Achievements) */}
-        <div 
-          className="absolute inset-0 w-full h-full backface-hidden rounded-xl border border-pink-500/20 overflow-hidden bg-zinc-900 shadow-2xl p-6"
+        <div
+          className="absolute inset-0 w-full h-full backface-hidden rounded-xl border border-[var(--brand-prism)]/20 overflow-hidden bg-[var(--bg-deep)] shadow-2xl p-6 flex flex-col"
           style={{ transform: "rotateY(180deg) translateZ(1px)" }}
         >
-          <h3 className="text-lg font-bold mb-4 text-pink-500">成果・ハイライト</h3>
-          <ul className="space-y-3">
+          {/* Background Logo */}
+          <div className="absolute inset-0 flex items-center justify-center opacity-[0.05] pointer-events-none">
+            <div className="relative w-48 h-48">
+              <Image src="/logo/my_logo.png" alt="" fill className="object-contain" />
+            </div>
+          </div>
+
+          <div className="flex justify-between items-start mb-4 relative z-10">
+            <h3 className="text-lg font-personality text-[var(--brand-prism)]">成果・ハイライト</h3>
+            <div className="relative w-12 h-12 opacity-80">
+              <Image src="/logo/my_logo.png" alt="My Logo" fill className="object-contain" />
+            </div>
+          </div>
+
+          <ul className="space-y-3 flex-grow relative z-10">
             {achievements?.map((item, i) => (
-              <li key={i} className="text-zinc-300 text-sm flex items-start gap-2">
-                <span className="text-pink-500 mt-1">✦</span>
+              <li key={i} className="text-[var(--text-slate)] text-sm font-human flex items-start gap-2">
                 {item}
               </li>
-            )) || <li className="text-zinc-500 text-sm italic">詳細情報は準備中です</li>}
+            )) || <li className="text-[var(--text-slate)] text-sm italic font-human">詳細情報は準備中です</li>}
           </ul>
-          
-          <div className="absolute bottom-6 left-6 right-6 pt-4 border-t border-white/5">
-            <span className="text-[10px] text-zinc-500 font-mono uppercase tracking-widest">Tap to flip back</span>
+
+          <div className="mt-auto pt-4 border-t border-white/5 flex justify-between items-center relative z-10">
+            <span className="text-[10px] text-[var(--text-slate)] font-logic uppercase tracking-widest">Tap to flip back</span>
           </div>
         </div>
       </motion.div>

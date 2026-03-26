@@ -1,3 +1,9 @@
+/**
+ * @file card.tsx
+ * @description shadcn/ui ベースの標準的なカードコンポーネント。
+ * ヘッダー、コンテンツ、フッターなどの各パーツを提供し、一貫したデザインのカードを構築します。
+ */
+
 import * as React from "react"
 
 import { cn } from "@/lib/utils"

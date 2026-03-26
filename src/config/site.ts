@@ -1,6 +1,12 @@
+/**
+ * @file site.ts
+ * @description サイト全体の構成情報を管理する設定ファイル。
+ * サイト名、説明、ナビゲーションメニューのリンク先などを一括管理します。
+ */
+
 export const siteConfig = {
   name: "Ichiro's Portfolio",
-  description: "宮本一路のポートフォリオサイト — 数学的思考でスケーラブルなシステムを構築するソフトウェアエンジニア",
+  description: "宮本一路のポートフォリオサイト — 数学的思考でスケーラブルなシステムを構築するソフトウェアエンジニア・時々イベンター",
   url: "https://example.com",
   
   // Navigation Links
@@ -16,8 +22,8 @@ export const siteConfig = {
   hero: {
     greeting: "こんにちは、",
     name: "Ichiro",
-    role: "ソフトウェアエンジニア",
-    tagline: "数学的思考で、スケーラブルなWeb体験を構築する",
+    role: "フルスタックエンジニア",
+    tagline: "数学的思考でスケーラブルなシステムを構築するソフトウェアエンジニア・時々イベンター",
     description: "要件定義からデプロイまで一気通貫で携わり、抽象化による課題解決力とプロダクト全工程を完遂する実装力で、拡張性の高いシステムを設計しています。",
     ctaText: "プロジェクトを見る",
   },
@@ -40,6 +46,17 @@ export const siteConfig = {
   // Experience Section
   experience: [
     {
+      title: "エンジニアインターン",
+      company: "株式会社光通信",
+      period: "2025.03 - 2026.03",
+      description: "エンジニアインターンとして、社内プロジェクトの企画業務・開発業務・プロジェクトマネジメントに従事しました。",
+      highlights: [
+        "グループ会社内で足りないものを考え、システムで解決できるよう企画",
+        "実装フェーズでは、フロントエンドからバックエンドまで幅広く担当。一時的にプロジェクトマネージャーも兼任し、タスク管理や進捗報告を実施",
+        "AIや新規クラウド技術など、技術のキャッチアップも欠かさず、プロジェクトに積極的に取り入れることで、開発の効率化と品質向上を実現"
+      ]
+    },
+    {
       title: "システムエンジニア（業務委託）",
       company: "株式会社変幻自在",
       period: "2024.04 - 2025.01",
@@ -51,7 +68,7 @@ export const siteConfig = {
       ]
     },
     {
-      title: "インターン",
+      title: "学生AIインターン",
       company: "株式会社AI tech institute",
       period: "2023.11 - 2024.03",
       description: "インターン生としてAI技術に関連する開発業務に携わりました。",
@@ -67,19 +84,19 @@ export const siteConfig = {
     {
       category: "実務・主要スキル",
       subtitle: "Projects & Internships",
-      items: ["TypeScript", "React", "Next.js", "HTML/CSS"],
+      items: ["TypeScript", "React", "Next.js", "HTML/CSS", "SQL", "Docker", "Firebase", "AWS","Flutter", "React Native","python"],
       variant: "secondary" as const,
     },
     {
       category: "個人開発・基礎",
       subtitle: "Personal Projects",
-      items: ["Node.js", "Framer Motion", "Git/GitHub", "Tailwind CSS"],
+      items: ["TypeScript", "React", "Next.js", "HTML/CSS", "SQL", "Docker", "Firebase", "AWS","Flutter", "React Native","python"],
       variant: "secondary" as const,
     },
     {
       category: "現在学習中",
       subtitle: "Currently Exploring",
-      items: ["Go", "AWS / Cloudflare", "Three.js"],
+      items: ["PyTorch","Kaggle", "AWS / Cloudflare", "Three.js"],
       variant: "outline" as const,
     }
   ],
@@ -87,24 +104,38 @@ export const siteConfig = {
   // Projects Section
   projects: [
     {
-      title: "Focus Productivity App",
-      description: "最大限の集中力を生み出すために設計されたタスク管理アプリです。ポモドーロタイマーと分析ダッシュボードを搭載しています。",
-      tags: ["React Native", "Expo"],
-      imagePlaceholder: "[App Demo / Screenshot]",
+      title: "Talk Analyser",
+      description: "録音・文字起こし・要約、会議の書記や授業のノートをワンボタンで",
+      tags: ["Flutter", "Rust"],
+      image: "/projects/talk-analyser.png",
       type: "app",
-      downloadRef: "/apps/focus-app-v1.apk",
-      downloadText: "APKをダウンロード",
-      repoUrl: "https://github.com/ichiro16go",
+      // downloadRef: "/apps/focus-app-v1.apk",
+      // downloadText: "APKをダウンロード",
+      // repoUrl: "https://github.com/ichiro16go",
     },
     {
-      title: "Reactにおけるハイドレーションの理解",
-      description: "Next.jsにおいて、サーバーサイドレンダリング（SSR）とハイドレーションが内部でどのように機能しているのかを深く掘り下げた技術記事です。",
-      tags: ["Next.js", "React", "Tech Blog"],
-      imagePlaceholder: "[Zenn / Qiita Cover Image]",
-      type: "article",
-      articleUrl: "#",
-      articleText: "記事を読む",
-      isGradientBg: true,
+      title: "ScanMate",
+      description: "業務効率を飛躍させるAI OCRソリューション",
+      tags: ["Next.js", "React",],
+      image: "/projects/scanmate.png",
+      type: "app",
+      repoUrl:"https://github.com/mplantsconsulting/scanmate"
+    },
+    {
+      title: "Azabu Esports Fes",
+      description:"日本最高峰の頭脳を持つ高校生たちによるe-sports大会",
+      tags:["e-sports","event"],
+      image: "/projects/azabu-esports-fes.png",
+      type:"event",
+      repoUrl:"https://www.youtube.com/@azabue-sportsfesaef9091"
+    },
+    {
+      title: "sprash festival 2024",
+      description:"都内取り壊し予定のマンションを貸切って、インクで好きなように落書きできるフェスを開催",
+      tags:["event","art"],
+      image: "/projects/splash-fes.png",
+      type:"event",
+      repoUrl:"https://ichiro16go.github.io/splash_festival2024/"
     }
   ],
 

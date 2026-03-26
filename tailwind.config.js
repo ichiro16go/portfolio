@@ -23,24 +23,29 @@ module.exports = {
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
   			primary: {
-  				DEFAULT: 'hsl(var(--primary))',
-  				foreground: 'hsl(var(--primary-foreground))'
+  				DEFAULT: 'var(--brand-prism)',
+  				foreground: 'var(--text-white)'
   			},
   			secondary: {
-  				DEFAULT: 'hsl(var(--secondary))',
-  				foreground: 'hsl(var(--secondary-foreground))'
+  				DEFAULT: 'var(--brand-cyber)',
+  				foreground: 'var(--bg-deep)'
   			},
+        brand: {
+          prism: 'var(--brand-prism)',
+          cyber: 'var(--brand-cyber)',
+          deep: 'var(--bg-deep)',
+        },
   			destructive: {
   				DEFAULT: 'hsl(var(--destructive))',
   				foreground: 'hsl(var(--destructive-foreground))'
   			},
   			muted: {
-  				DEFAULT: 'hsl(var(--muted))',
-  				foreground: 'hsl(var(--muted-foreground))'
+  				DEFAULT: 'var(--text-slate)',
+  				foreground: 'var(--text-slate)'
   			},
   			accent: {
-  				DEFAULT: 'hsl(var(--accent))',
-  				foreground: 'hsl(var(--accent-foreground))'
+  				DEFAULT: 'var(--brand-prism)',
+  				foreground: 'var(--text-white)'
   			},
   			popover: {
   				DEFAULT: 'hsl(var(--popover))',
@@ -50,13 +55,6 @@ module.exports = {
   				DEFAULT: 'hsl(var(--card))',
   				foreground: 'hsl(var(--card-foreground))'
   			},
-  			brand: {
-				DEFAULT: '#ECE6E8',
-				hover: '#db8fab'
-			},
-  			alt: {
-  				DEFAULT: '#F59E0B'
-  			},
   			chart: {
   				'1': 'hsl(var(--chart-1))',
   				'2': 'hsl(var(--chart-2))',
@@ -65,6 +63,19 @@ module.exports = {
   				'5': 'hsl(var(--chart-5))'
   			}
   		},
+      fontFamily: {
+        personality: ['var(--font-personality)', 'sans-serif'],
+        logic: ['var(--font-logic)', 'monospace'],
+        human: ['var(--font-human)', 'sans-serif'],
+      },
+      spacing: {
+        'xs': '8px',
+        'sm': '16px',
+        'md': '24px',
+        'lg': '40px',
+        'xl': '64px',
+        '2xl': '104px',
+      },
   		borderRadius: {
   			lg: 'var(--radius)',
   			md: 'calc(var(--radius) - 2px)',

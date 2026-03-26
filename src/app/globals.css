@@ -4,52 +4,40 @@
 
 @layer base {
   :root {
-    /* Typography */
-    --font-primary: 'Inter', 'Noto Sans JP', sans-serif;
-    --font-mono: 'JetBrains Mono', monospace;
+    /* Color Tokens - Prism Architect */
+    --bg-deep: #0D0F12;
+    --brand-prism: #D47FF2;
+    --brand-cyber: #00F5D4;
+    --text-white: #F2F4F7;
+    --text-slate: #94A3B8;
 
-    /* Dark Theme as Default (Black base with Pink accent) */
-    --background: 0 0% 0%; /* Black */
-    --foreground: 0 0% 98%; /* Off-white */
-
-    --card: 0 0% 3.9%;
-    --card-foreground: 0 0% 98%;
-
-    --popover: 0 0% 3.9%;
-    --popover-foreground: 0 0% 98%;
-
-    --primary: 342 100% 58%; /* Vivid Pink: #ff2d55 */
-    --primary-foreground: 0 0% 100%;
-
-    --secondary: 0 0% 9%;
-    --secondary-foreground: 0 0% 98%;
-
-    --muted: 0 0% 14.9%;
-    --muted-foreground: 0 0% 63.9%;
-
-    --accent: 342 100% 58%; /* Pink */
-    --accent-foreground: 0 0% 100%;
-
+    /* Shadcn compatibility mapping */
+    --background: 220 16% 6%; /* Close to #0D0F12 */
+    --foreground: 210 20% 96%; /* Close to #F2F4F7 */
+    --card: 220 16% 8%;
+    --card-foreground: 210 20% 96%;
+    --popover: 220 16% 6%;
+    --popover-foreground: 210 20% 96%;
+    --primary: 284 81% 72%; /* Close to #D47FF2 */
+    --primary-foreground: 210 20% 96%;
+    --secondary: 172 100% 48%; /* Close to #00F5D4 */
+    --secondary-foreground: 220 16% 6%;
+    --muted: 215 16% 47%; /* Close to #94A3B8 */
+    --muted-foreground: 215 16% 47%;
+    --accent: 284 81% 72%;
+    --accent-foreground: 210 20% 96%;
     --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 98%;
-
-    --border: 0 0% 14.9%;
-    --input: 0 0% 14.9%;
-    --ring: 342 100% 58%;
-
-    /* Layout & Spacing */
+    --destructive-foreground: 210 20% 96%;
+    --border: 215 16% 47% / 0.2;
+    --input: 215 16% 47% / 0.2;
+    --ring: 284 81% 72%;
     --radius: 0.5rem;
-    
-    /* Legacy/Custom variables */
-    --bg-base: #000000;
-    --bg-surface: #0a0a0a;
-    --text-primary: #ffffff;
-    --text-secondary: #a1a1aa;
-    --color-brand: #ff2d55;
-    --color-brand-hover: #ff4f73;
-    --color-accent: #ff2d55;
-    --spacing-unit: 4px;
-    --transition-normal: 0.3s ease;
+
+    /* UI Patterns */
+    --glass-bg: rgba(13, 15, 18, 0.15);
+    --glass-blur: blur(12px);
+    --border-thin: 1px solid rgba(148, 163, 184, 0.2);
+    --font-human: "LINE Seed JP", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "BIZ UDPGothic", "Meiryo", sans-serif;
   }
 }
 
@@ -58,8 +46,38 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground;
-    background-color: var(--bg-base);
+    @apply bg-[var(--bg-deep)] text-[var(--text-white)];
+    font-family: var(--font-human), sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+@layer components {
+  .glass {
+    background: var(--glass-bg);
+    backdrop-filter: var(--glass-blur);
+    border: var(--border-thin);
+  }
+
+  .title-personality {
+    font-family: var(--font-personality);
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+  }
+
+  .text-logic {
+    font-family: var(--font-logic);
+  }
+
+  .text-human {
+    font-family: var(--font-human);
+  }
+
+  .border-prism-hover {
+    transition: border-color 0.3s ease;
+  }
+  .border-prism-hover:hover {
+    border-image: linear-gradient(to right, var(--brand-prism), var(--brand-cyber)) 1;
   }
 }
 
@@ -67,32 +85,4 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-}
-
-body {
-  color: var(--text-primary);
-  font-family: var(--font-primary);
-  line-height: 1.6;
-  -webkit-font-smoothing: antialiased;
-}
-
-h1, h2, h3 {
-  color: var(--text-primary);
-  font-weight: 700;
-}
-
-p {
-  color: var(--text-secondary);
-}
-
-.text-pink {
-  color: var(--color-brand);
-}
-
-.bg-pink {
-  background-color: var(--color-brand);
-}
-
-.border-pink {
-  border-color: var(--color-brand);
 }
