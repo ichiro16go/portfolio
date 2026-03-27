@@ -119,25 +119,25 @@ export default function Home() {
             className="grid grid-cols-2 md:flex md:flex-nowrap justify-center gap-4 md:gap-12 w-full md:w-auto px-4 md:px-12"
           >
             <TCGCard
-              title="About Ichiro Miyamoto" icon="" imageSrc="/selfy/スタジオ.jpg"
+              title="About Ichiro Miyamoto" icon="" imageSrc="/selfy/image.png"
               desc="自己紹介です。"
               stats={{ level: 3, atk: 2100, def: 1800 }}
               onClick={() => handleSelectCard("/about")} index={0} isMobile={isMobile}
             />
             <TCGCard
-              title="Career History" icon="" imageSrc="/selfy/イベントでの.jpg"
+              title="Career History" icon="" imageSrc="/selfy/career.png"
               desc="経歴および職歴を掲載しています。"
               stats={{ level: 4, atk: 2400, def: 2000 }}
               onClick={() => handleSelectCard("/experience")} index={1} isMobile={isMobile}
             />
             <TCGCard
-              title="Skills" icon="" imageSrc="/logo/my_logo.png"
+              title="Skills" icon="" imageSrc="/selfy/training.png"
               desc="主にエンジニアリングで扱えるスキルをまとめています。技術スタックや使用経験のあるツールなどを紹介しています。"
               stats={{ level: 5, atk: 2800, def: 1500 }}
               onClick={() => handleSelectCard("/skills")} index={2} isMobile={isMobile}
             />
             <TCGCard
-              title="Feature Projects" icon="" imageSrc="/logo/my_logo.png"
+              title="Feature Projects" icon="" imageSrc="/selfy/engineering.png"
               desc="過去に携わったプロジェクトや開催したイベントの中から、特に注目してほしいものをピックアップして紹介しています。"
               stats={{ level: 4, atk: 2600, def: 1900 }}
               onClick={() => handleSelectCard("/projects")} index={3} isMobile={isMobile}
@@ -197,9 +197,9 @@ function TCGCard({ title, icon, imageSrc, desc, stats, onClick, index, isMobile 
         <div className="flex-grow bg-[#000] rounded border border-white/5 relative overflow-hidden mb-2 md:mb-4 shadow-inner">
           <Image src={imageSrc} alt={title} fill className="object-cover opacity-60 md:group-hover:opacity-100 transition-all duration-500" />
           {/* Logo Watermark */}
-          <div className="absolute top-2 right-2 w-6 h-6 opacity-20 group-hover:opacity-40 transition-opacity">
+          {/* <div className="absolute top-2 right-2 w-6 h-6 opacity-20 group-hover:opacity-40 transition-opacity">
             <Image src="/logo/my_logo.png" alt="Logo" fill className="object-contain" />
-          </div>
+          </div> */}
         </div>
 
         {/* Desc Box */}

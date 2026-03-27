@@ -34,14 +34,14 @@ export function About() {
                 className="object-cover transition-transform duration-700 group-hover:scale-110"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60" />
-              <div className="absolute bottom-6 left-6">
+              {/* <div className="absolute bottom-6 left-6">
                 <Badge className="bg-[var(--brand-prism)] text-[var(--bg-deep)] border-none px-3 py-1 text-[10px] font-logic tracking-widest uppercase">
                   Logical Explorer
                 </Badge>
-              </div>
+              </div> */}
             </div>
-            
-            <div className="relative aspect-video rounded-2xl overflow-hidden border border-white/10 group">
+
+            {/* <div className="relative aspect-video rounded-2xl overflow-hidden border border-white/10 group">
               <Image
                 src="/selfy/イベントでの.jpg"
                 alt="Event activity"
@@ -54,7 +54,7 @@ export function About() {
                   Active Builder
                 </Badge>
               </div>
-            </div>
+            </div> */}
           </div>
 
           {/* Text Side */}
