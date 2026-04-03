@@ -116,7 +116,7 @@ export default function Home() {
         {gameState === "hand" && (
           <motion.div
             key="hand"
-            className="grid grid-cols-2 md:flex md:flex-nowrap justify-center gap-4 md:gap-12 w-full md:w-auto px-4 md:px-12"
+            className="grid grid-cols-2 sm:grid-cols-3 md:flex md:flex-nowrap md:justify-center gap-4 md:gap-4 w-full px-4 md:px-6 overflow-x-auto overflow-y-hidden py-24"
           >
             <TCGCard
               title="About Ichiro Miyamoto" icon="" imageSrc="/selfy/image.png"
@@ -142,6 +142,12 @@ export default function Home() {
               stats={{ level: 4, atk: 2600, def: 1900 }}
               onClick={() => handleSelectCard("/projects")} index={3} isMobile={isMobile}
             />
+            <TCGCard
+              title="Activity & Writing" icon="" imageSrc="/selfy/image.png"
+              desc="GitHubのコントリビューショングラフとQiitaの記事一覧を3Dで確認できます。"
+              stats={{ level: 4, atk: 2300, def: 2200 }}
+              onClick={() => handleSelectCard("/activity")} index={4} isMobile={isMobile}
+            />
           </motion.div>
         )}
 
@@ -158,9 +164,9 @@ function TCGCard({ title, icon, imageSrc, desc, stats, onClick, index, isMobile 
 
   if (isMobile) {
     initialX = index % 2 === 0 ? 80 : -80;
-    initialY = index < 2 ? 120 : -120;
+    initialY = index < 2 ? 120 : index < 4 ? -120 : 0;
   } else {
-    initialX = -(index - 1.5) * 320;
+    initialX = -(index - 2) * 260;
   }
 
   return (
@@ -171,13 +177,13 @@ function TCGCard({ title, icon, imageSrc, desc, stats, onClick, index, isMobile 
         y: 0,
         scale: 1,
         opacity: 1,
-        rotate: isMobile ? (index % 2 === 0 ? -2 : 2) : (index - 1.5) * 4
+        rotate: isMobile ? (index % 2 === 0 ? -2 : 2) : (index - 2) * 4
       }}
       transition={{ type: "spring", stiffness: 100, damping: 12, delay: index * 0.1 }}
       whileHover={!isMobile ? { y: -60, scale: 1.1, zIndex: 50 } : {}}
       whileTap={{ scale: 0.95 }}
       onClick={onClick}
-      className="relative w-full aspect-[2/3] md:w-[280px] md:h-[440px] bg-[var(--bg-deep)] rounded-lg md:rounded-2xl border-[2px] md:border-[4px] border-white/10 p-0.5 md:p-1 shadow-2xl cursor-pointer group overflow-hidden glass"
+      className="relative w-full aspect-[2/3] md:w-[220px] md:h-[380px] bg-[var(--bg-deep)] rounded-lg md:rounded-2xl border-[2px] md:border-[4px] border-white/10 p-0.5 md:p-1 shadow-2xl cursor-pointer group overflow-hidden glass"
     >
       <div className="h-full border border-[var(--brand-prism)]/20 rounded-md md:rounded-lg p-2 md:p-4 flex flex-col bg-[var(--bg-deep)]/80 relative z-0">
         {/* Title Bar */}
